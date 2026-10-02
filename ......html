@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Queen! ❤️ | Special Release v2.0</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            900: '#881337',
+                            violet: '#2e1065',
+                            dark: '#0f0716',
+                            card: '#1a0b2e',
+                            border: '#3b1c63'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0c0512;
+            color: #f3e8ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(26, 11, 46, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(244, 63, 94, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(244, 63, 94, 0.2);
+        }
+
+        .terminal-card {
+            background: rgba(15, 7, 22, 0.9);
+            border: 1px solid #3b1c63;
+            box-shadow: inset 0 0 15px rgba(244, 63, 94, 0.1);
+        }
+
+        /* Heart animation background */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(244, 63, 94, 0.15);
+            animation: float 12s infinite linear;
+            bottom: -50px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Neon Glow Utility */
+        .glow-pink {
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+        }
+
+        /* Card Flip 3D Animation */
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.85; }
+        }
+        .pulse-heart {
+            animation: pulse-slow 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative pb-16">
+
+    <div class="bg-hearts" id="hearts-container"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-4xl mx-auto px-4 pt-6 relative z-10 space-y-8">
+
+        <!-- Header Banner -->
+        <header class="text-center space-y-3 pt-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                LIVE STATUS: 100% IN LOVE
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-pink-400 to-purple-400 tracking-tight">
+                Happy Birthday, Queen! 🎉❤️
+            </h1>
+            <p class="text-rose-200/80 text-sm sm:text-base font-medium max-w-lg mx-auto">
+                Compiled with unconditional love, zero bugs, and 100% devotion specially for you.
+            </p>
+        </header>
+
+        <!-- Interactive Terminal Boot Card -->
+        <div class="terminal-card rounded-2xl overflow-hidden font-mono text-xs sm:text-sm">
+            <div class="bg-slate-900/80 px-4 py-2.5 border-b border-purple-900/50 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                    <span class="text-slate-400 text-xs ml-2 font-mono">birthday_protocol.sh</span>
+                </div>
+                <span class="text-rose-400/80 text-xs">v2026.10.02</span>
+            </div>
+            <div class="p-4 sm:p-5 space-y-2 text-rose-300/90 leading-relaxed min-h-[140px]" id="terminal-body">
+                <!-- Typed text appears here dynamically -->
+            </div>
+        </div>
+
+        <!-- Central Surprise Button -->
+        <div class="text-center py-2">
+            <button onclick="triggerMidnightSurprise()" 
+                    class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 rounded-full glow-pink hover:scale-105 active:scale-95 transition-all duration-300">
+                <i data-lucide="sparkles" class="w-6 h-6 text-yellow-300 animate-spin"></i>
+                <span>Click for Birthday Surprise 🎉</span>
+                <i data-lucide="heart" class="w-6 h-6 text-rose-200 fill-rose-200 pulse-heart"></i>
+            </button>
+        </div>
+
+        <!-- Distance Connection Widget -->
+        <section class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-rose-500/20 pb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="wifi" class="text-rose-400 w-5 h-5"></i>
+                        Distance & Connection Meter
+                    </h2>
+                    <p class="text-xs text-rose-200/70">Miles Apart, Connected by Heart ❤️</p>
+                </div>
+                <div class="flex items-center gap-2 bg-purple-950/60 px-4 py-2 rounded-xl border border-rose-500/20">
+                    <i data-lucide="zap" class="w-4 h-4 text-yellow-400"></i>
+                    <span class="text-xs font-mono text-rose-200">Latency: <span class="text-emerald-400 font-bold">0.00ms</span> (Instant Love)</span>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex justify-between items-center text-sm font-medium">
+                    <span class="text-rose-300 font-mono">Your City 📍</span>
+                    <span class="text-xs text-rose-400 font-mono" id="connection-status">LOVE SIGNAL: 100% EXCELLENT 📶</span>
+                    <span class="text-rose-300 font-mono">My City 📍</span>
+                </div>
+
+                <!-- Interactive Charge Meter Slider -->
+                <div class="relative w-full bg-slate-900/80 rounded-full h-5 border border-rose-500/30 overflow-hidden p-0.5">
+                    <div id="signal-bar" class="bg-gradient-to-r from-rose-500 via-pink-500 to-emerald-400 h-full rounded-full transition-all duration-500 w-[100%] shadow-[0_0_12px_rgba(244,63,94,0.8)]"></div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                    <p class="text-xs text-rose-200/80 text-center sm:text-left">
+                        💡 <span class="text-rose-300 font-semibold">CS Fact:</span> Even physical distance $d \to \infty$, connection strength stays $O(1)$ constant!
+                    </p>
+                    <button onclick="boostSignal()" class="text-xs font-mono px-4 py-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 border border-rose-500/40 transition flex items-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                        Overclock Love Signal ⚡
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Birthday Coupons Section -->
+        <section class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="ticket" class="text-rose-400 w-6 h-6"></i>
+                        Redeemable Birthday Coupons 🎟️️
+                    </h2>
+                    <p class="text-xs text-rose-200/70">Click [Claim Now] to send an instant redemption request to your boyfriend!</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Coupon 1 -->
+                <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-300">
+                            <i data-lucide="pizza" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">NO EXPIRY</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">Zomato Food Treat</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">Order any favorite food or dessert tonight. Fully paid by your CS dev boyfriend!</p>
+                    </div>
+                    <button onclick="claimCoupon('Zomato Treat / Favorite Dinner 🍕')" 
+                            class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
+                        <span>Claim Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Coupon 2 -->
+                <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 rounded-xl bg-purple-500/20 border border-purple-500/30 text-purple-300">
+                            <i data-lucide="film" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">TONIGHT</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">Late Night Movie Watch Party</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">Teleparty / Discord screen share sync date. You pick the movie/anime!</p>
+                    </div>
+                    <button onclick="claimCoupon('Late Night Movie & Watch Party 🎬')" 
+                            class="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
+                        <span>Claim Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Coupon 3 -->
+                <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">UNLIMITED TODAY</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">Win Any Argument Pass</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">Instant bypass to win any debate or argument today without objections.</p>
+                    </div>
+                    <button onclick="claimCoupon('Win Any Argument Pass 🤫')" 
+                            class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
+                        <span>Claim Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Coupon 4 -->
+                <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
+                    <div class="flex items-start justify-between">
+                        <div class="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300">
+                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">ON NEXT MEETUP</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">Unlimited Hugs & Warm Cuddles</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">Physical delivery voucher redeemable immediately on our next meetup!</p>
+                    </div>
+                    <button onclick="claimCoupon('Unlimited Hugs on Next Meetup 🫂')" 
+                            class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
+                        <span>Claim Now</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CS Love Puns & Algorithm Cards -->
+        <section class="space-y-4">
+            <div>
+                <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <i data-lucide="code-2" class="text-rose-400 w-6 h-6"></i>
+                    Why You Are My Favorite Algorithm 💻❤️
+                </h2>
+                <p class="text-xs text-rose-200/70">Click on each card to flip and view the dev notes!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Flip Card 1 -->
+                <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl transition-all">
+                        <!-- Front -->
+                        <div class="flip-card-front glass-card absolute inset-0 rounded-2xl p-5 flex flex-col justify-between border-rose-500/30">
+                            <div class="flex justify-between items-center">
+                                <span class="font-mono text-xs text-rose-400">01_complexity.js</span>
+                                <i data-lucide="rotate-cw" class="w-4 h-4 text-rose-300"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-3xl font-mono font-bold text-rose-300">O(1)</span>
+                                <p class="text-sm font-semibold text-white mt-1">Constant Time Priority</p>
+                            </div>
+                            <p class="text-[10px] text-center text-rose-200/60 font-mono">Tap to flip card 🔄</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back glass-card absolute inset-0 rounded-2xl p-5 flex flex-col justify-center text-center bg-purple-950/90 border-rose-500/50">
+                            <h4 class="font-bold text-rose-300 text-sm mb-2">Priority Level: Highest</h4>
+                            <p class="text-xs text-rose-100 leading-relaxed">
+                                No matter how many tasks or processes are running in my life, you will always remain my O(1) top priority.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 2 -->
+                <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl transition-all">
+                        <!-- Front -->
+                        <div class="flip-card-front glass-card absolute inset-0 rounded-2xl p-5 flex flex-col justify-between border-rose-500/30">
+                            <div class="flex justify-between items-center">
+                                <span class="font-mono text-xs text-rose-400">02_memory.cpp</span>
+                                <i data-lucide="rotate-cw" class="w-4 h-4 text-rose-300"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-3xl font-mono font-bold text-pink-300">100% RAM</span>
+                                <p class="text-sm font-semibold text-white mt-1">Memory Allocation</p>
+                            </div>
+                            <p class="text-[10px] text-center text-rose-200/60 font-mono">Tap to flip card 🔄</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back glass-card absolute inset-0 rounded-2xl p-5 flex flex-col justify-center text-center bg-purple-950/90 border-rose-500/50">
+                            <h4 class="font-bold text-pink-300 text-sm mb-2">Zero Memory Leak</h4>
+                            <p class="text-xs text-rose-100 leading-relaxed">
+                                My mind is completely occupied with memories of your cute smile. Garbage collector is disabled for you!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flip Card 3 -->
+                <div class="flip-card h-48 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full rounded-2xl transition-all">
+                        <!-- Front -->
+                        <div class="flip-card-front glass-card absolute inset-0 rounded-2xl p-5 flex flex-col justify-between border-rose-500/30">
+                            <div class="flex justify-between items-center">
+                                <span class="font-mono text-xs text-rose-400">03_uptime.py</span>
+                                <i data-lucide="rotate-cw" class="w-4 h-4 text-rose-300"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="text-3xl font-mono font-bold text-emerald-300">99.999%</span>
+                                <p class="text-sm font-semibold text-white mt-1">Uptime & Devotion</p>
+                            </div>
+                            <p class="text-[10px] text-center text-rose-200/60 font-mono">Tap to flip card 🔄</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back glass-card absolute inset-0 rounded-2xl p-5 flex flex-col justify-center text-center bg-purple-950/90 border-rose-500/50">
+                            <h4 class="font-bold text-emerald-300 text-sm mb-2">24/7 Server Running</h4>
+                            <p class="text-xs text-rose-100 leading-relaxed">
+                                24 Hours, 365 Days loving you! My heart server has zero downtime and endless support for you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom Modal Popup -->
+        <div id="claim-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 z-50">
+            <div class="glass-card bg-slate-900 border-2 border-rose-500 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative animate-bounce-short">
+                <div class="w-16 h-16 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto border border-rose-500/40">
+                    <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Coupon Claimed! 🎉</h3>
+                <p class="text-sm text-rose-200/80" id="modal-coupon-name">Your redemption order has been logged!</p>
+                <div class="p-3 bg-rose-950/40 rounded-xl border border-rose-500/20 text-xs font-mono text-rose-300">
+                    📲 Take a quick screenshot & send it to your boyfriend to redeem instantly!
+                </div>
+                <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-rose-600 to-purple-600 hover:from-rose-500 hover:to-purple-500 text-white font-bold rounded-xl transition">
+                    Got it, Sweetheart! ❤️
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center pt-8 text-xs text-rose-300/50 space-y-1 font-mono">
+            <p>Made with ❤️ and Code by your CS Boyfriend</p>
+            <p>© 2026 Love Release Version. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // 1. Create Floating Hearts Background
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartIcons = ['❤️', '💖', '✨', '💕', '🌸', '💻'];
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                heart.style.fontSize = (Math.random() * 14 + 14) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // 2. Terminal Auto Typing Boot Sequence
+        const terminalLogs = [
+            "> Initializing birthday_protocol.exe...",
+            "> Establishing secure socket connection across cities...",
+            "> Connection established: Latency = 0ms [Heart Connected]",
+            "> Scanning system for bugs...",
+            "> Result: 0 Bugs found. User is 100% PERFECT & CUTE!",
+            "> Compiling love, warm hugs, and birthday wishes...",
+            "> Status: SUCCESS! Happy Birthday my favorite programmer! ❤️"
+        ];
+
+        let logIndex = 0;
+        function typeTerminalLogs() {
+            const terminalBody = document.getElementById('terminal-body');
+            if (logIndex < terminalLogs.length) {
+                const line = document.createElement('div');
+                line.className = "flex items-start gap-2";
+                line.innerHTML = `<span class="text-emerald-400">$</span> <span>${terminalLogs[logIndex]}</span>`;
+                terminalBody.appendChild(line);
+                logIndex++;
+                setTimeout(typeTerminalLogs, 700);
+            }
+        }
+        setTimeout(typeTerminalLogs, 500);
+
+        // 3. Claim Coupon Action + Confetti Effect
+        function claimCoupon(couponTitle) {
+            // Trigger Confetti
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            document.getElementById('modal-coupon-name').innerText = `You have redeemed: "${couponTitle}"`;
+            document.getElementById('claim-modal').classList.remove('hidden');
+            document.getElementById('claim-modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            document.getElementById('claim-modal').classList.add('hidden');
+            document.getElementById('claim-modal').classList.remove('flex');
+        }
+
+        // 4. Boost Love Signal Meter
+        function boostSignal() {
+            const bar = document.getElementById('signal-bar');
+            const status = document.getElementById('connection-status');
+            
+            bar.style.width = '100%';
+            status.innerText = "LOVE SIGNAL: 200% OVERCLOCKED! ⚡❤️";
+            status.classList.add('text-emerald-400');
+
+            confetti({
+                particleCount: 40,
+                spread: 50,
+                origin: { y: 0.8 }
+            });
+
+            setTimeout(() => {
+                status.innerText = "LOVE SIGNAL: 100% EXCELLENT 📶";
+            }, 3000);
+        }
+
+        // 5. Full Screen Midnight Surprise Confetti
+        function triggerMidnightSurprise() {
+            const duration = 3 * 1000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+
+                // Fireworks confetti from both sides
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
