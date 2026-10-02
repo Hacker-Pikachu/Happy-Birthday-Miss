@@ -145,7 +145,6 @@
     <!-- Main Container -->
     <div class="max-w-4xl mx-auto px-4 pt-6 relative z-10 space-y-8">
 
-        <!-- Header Banner -->
         <header class="text-center space-y-3 pt-4">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-mono tracking-wider">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
@@ -159,7 +158,6 @@
             </p>
         </header>
 
-        <!-- Interactive Terminal Boot Card -->
         <div class="terminal-card rounded-2xl overflow-hidden font-mono text-xs sm:text-sm">
             <div class="bg-slate-900/80 px-4 py-2.5 border-b border-purple-900/50 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
@@ -175,7 +173,7 @@
             </div>
         </div>
 
-        <!-- Central Surprise Button -->
+        <!-- Central Celebration Button -->
         <div class="text-center py-2">
             <button onclick="triggerMidnightSurprise()" 
                     class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 text-base sm:text-lg font-bold text-white bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 rounded-full glow-pink hover:scale-105 active:scale-95 transition-all duration-300">
@@ -185,7 +183,6 @@
             </button>
         </div>
 
-        <!-- Distance Connection Widget -->
         <section class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-rose-500/20 pb-4">
                 <div>
@@ -225,89 +222,88 @@
             </div>
         </section>
 
-        <!-- Digital Birthday Coupons Section -->
         <section class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div>
                     <h2 class="text-2xl font-bold text-white flex items-center gap-2">
                         <i data-lucide="ticket" class="text-rose-400 w-6 h-6"></i>
-                        Redeemable Birthday Coupons 🎟️️
+                        Redeemable Birthday Coupons 🎟
                     </h2>
                     <p class="text-xs text-rose-200/70">Click [Claim Now] to send an instant redemption request to your boyfriend!</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- Coupon 1 -->
+                <!-- Coupon 1: Restaurant Food Treat -->
                 <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
                     <div class="flex items-start justify-between">
                         <div class="p-3 rounded-xl bg-rose-500/20 border border-rose-500/30 text-rose-300">
-                            <i data-lucide="pizza" class="w-6 h-6"></i>
+                            <i data-lucide="utensils" class="w-6 h-6"></i>
                         </div>
-                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">NO EXPIRY</span>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">NEXT MEETUP</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg text-white">Zomato Food Treat</h3>
-                        <p class="text-xs text-rose-200/80 mt-1">Order any favorite food or dessert tonight. Fully paid by your CS dev boyfriend!</p>
+                        <h3 class="font-bold text-lg text-white">Deluxe Restaurant Food Treat 🍽️✨</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">A grand dinner date at your favorite restaurant on our next meetup. Entirely sponsored by me!</p>
                     </div>
-                    <button onclick="claimCoupon('Zomato Treat / Favorite Dinner 🍕')" 
+                    <button onclick="claimCoupon('Deluxe Restaurant Food Treat Date 🍕🍝')" 
                             class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
                         <span>Claim Now</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
 
-                <!-- Coupon 2 -->
+                <!-- Coupon 2: Shopping or Movie Date -->
                 <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
                     <div class="flex items-start justify-between">
                         <div class="p-3 rounded-xl bg-purple-500/20 border border-purple-500/30 text-purple-300">
-                            <i data-lucide="film" class="w-6 h-6"></i>
+                            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
                         </div>
-                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">TONIGHT</span>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">YOUR CHOICE</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg text-white">Late Night Movie Watch Party</h3>
-                        <p class="text-xs text-rose-200/80 mt-1">Teleparty / Discord screen share sync date. You pick the movie/anime!</p>
+                        <h3 class="font-bold text-lg text-white">Shopping Spree OR Movie Date 🛍️🎬</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">Mall shopping spree or back-to-back movie date with me when we meet. Your choice, my treat!</p>
                     </div>
-                    <button onclick="claimCoupon('Late Night Movie & Watch Party 🎬')" 
+                    <button onclick="claimCoupon('Shopping Spree or Movie Date 🛍️🎬')" 
                             class="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
                         <span>Claim Now</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
 
-                <!-- Coupon 3 -->
+                <!-- Coupon 3: Win Any Argument Pass -->
                 <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
                     <div class="flex items-start justify-between">
                         <div class="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300">
-                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            <i data-lucide="crown" class="w-6 h-6"></i>
                         </div>
-                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">UNLIMITED TODAY</span>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">VIP OVERRIDE</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg text-white">Win Any Argument Pass</h3>
-                        <p class="text-xs text-rose-200/80 mt-1">Instant bypass to win any debate or argument today without objections.</p>
+                        <h3 class="font-bold text-lg text-white">Win Any Argument Pass 🤫👑</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">Instant bypass command! Use this coupon to automatically win any debate or argument with me without any objections.</p>
                     </div>
-                    <button onclick="claimCoupon('Win Any Argument Pass 🤫')" 
+                    <button onclick="claimCoupon('Win Any Argument Pass 👑🤫')" 
                             class="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
                         <span>Claim Now</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
 
-                <!-- Coupon 4 -->
+                <!-- Coupon 4: One Wish as Your Choice -->
                 <div class="glass-card rounded-2xl p-5 space-y-4 relative overflow-hidden group">
                     <div class="flex items-start justify-between">
                         <div class="p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300">
-                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                            <i data-lucide="wand-2" class="w-6 h-6"></i>
                         </div>
-                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">ON NEXT MEETUP</span>
+                        <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">SUDO GRANT</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg text-white">Unlimited Hugs & Warm Cuddles</h3>
-                        <p class="text-xs text-rose-200/80 mt-1">Physical delivery voucher redeemable immediately on our next meetup!</p>
+                        <h3 class="font-bold text-lg text-white">Grant Any Wish Command ✨🪄</h3>
+                        <p class="text-xs text-rose-200/80 mt-1">One wish of your absolute choice! Ask for anything in the world and it will be granted non-negotiably.</p>
                     </div>
-                    <button onclick="claimCoupon('Unlimited Hugs on Next Meetup 🫂')" 
+                    <button onclick="claimCoupon('Grant Any Wish Custom Command ✨🪄')" 
                             class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
                         <span>Claim Now</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -316,7 +312,6 @@
             </div>
         </section>
 
-        <!-- CS Love Puns & Algorithm Cards -->
         <section class="space-y-4">
             <div>
                 <h2 class="text-2xl font-bold text-white flex items-center gap-2">
@@ -404,9 +399,8 @@
             </div>
         </section>
 
-        <!-- Custom Modal Popup -->
         <div id="claim-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 z-50">
-            <div class="glass-card bg-slate-900 border-2 border-rose-500 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative animate-bounce-short">
+            <div class="glass-card bg-slate-900 border-2 border-rose-500 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-4 shadow-2xl relative">
                 <div class="w-16 h-16 bg-rose-500/20 text-rose-400 rounded-full flex items-center justify-center mx-auto border border-rose-500/40">
                     <i data-lucide="check-circle-2" class="w-10 h-10"></i>
                 </div>
@@ -421,7 +415,6 @@
             </div>
         </div>
 
-        <!-- Footer -->
         <footer class="text-center pt-8 text-xs text-rose-300/50 space-y-1 font-mono">
             <p>Made with ❤️ and Code by your CS Boyfriend</p>
             <p>© 2026 Love Release Version. All rights reserved.</p>
@@ -436,7 +429,7 @@
         // 1. Create Floating Hearts Background
         function createHearts() {
             const container = document.getElementById('hearts-container');
-            const heartIcons = ['❤️', '💖', '✨', '💕', '🌸', '💻'];
+            const heartIcons = ['❤️️', '💖', '✨', '💕', '🌸', '💻'];
             for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'floating-heart';
@@ -457,7 +450,7 @@
             "> Connection established: Latency = 0ms [Heart Connected]",
             "> Scanning system for bugs...",
             "> Result: 0 Bugs found. User is 100% PERFECT & CUTE!",
-            "> Compiling love, warm hugs, and birthday wishes...",
+            "> Compiling love, warm wishes, and custom coupons...",
             "> Status: SUCCESS! Happy Birthday my favorite programmer! ❤️"
         ];
 
@@ -477,7 +470,6 @@
 
         // 3. Claim Coupon Action + Confetti Effect
         function claimCoupon(couponTitle) {
-            // Trigger Confetti
             confetti({
                 particleCount: 100,
                 spread: 70,
@@ -533,7 +525,6 @@
 
                 const particleCount = 50 * (timeLeft / duration);
 
-                // Fireworks confetti from both sides
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
             }, 250);
